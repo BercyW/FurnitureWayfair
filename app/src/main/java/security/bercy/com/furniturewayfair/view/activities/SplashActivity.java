@@ -1,10 +1,12 @@
 package security.bercy.com.furniturewayfair.view.activities;
 
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,11 +24,10 @@ import security.bercy.com.furniturewayfair.R;
 public class SplashActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.leader_img)
     ViewPager mLeaderImg;
-    @BindView(R.id.leader_circle)
+
     AutoLinearLayout mLeaderCircle;
-    @BindView(R.id.leader_red)
+
     ImageView mLeaderRed;
 
     private List<View> mViewList;
@@ -39,18 +40,19 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ButterKnife.bind(this);
+         mLeaderImg = findViewById(R.id.leader_img);
+        mLeaderCircle = findViewById(R.id.leader_circle);
+        mLeaderRed = findViewById(R.id.leader_red);
+
         instance = this;
         init();
     }
-    private void init()
-    {
+
+    private void init() {
         initCircles();
-        mLeaderImg.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
-        {
+        mLeaderImg.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-            {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 float leftMargin = left * (position + positionOffset);
                 RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mLeaderRed.getLayoutParams();
                 params.leftMargin = Math.round(leftMargin);
@@ -60,8 +62,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 final ImageView simple = mViewList.get(position).findViewById(R.id.leader_img);
-                switch (position)
-                {
+                switch (position) {
                     case 0:
                         simple.setImageResource(R.drawable.splash0);
                         break;
@@ -77,32 +78,55 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state)
-            {
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
 
-
+        mLeaderImg.setAdapter(new LeaderAdapter());
     }
 
-    private void initCircles()
-    {
+    private void initCircles() {
         mViewList = new ArrayList<>();
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
             mView = LayoutInflater.from(this).inflate(R.layout.item_leader_viewpager, null);
             mViewList.add(mView);
         }
 
-        mLeaderRed.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-        {
+        mLeaderRed.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
-            public void onGlobalLayout()
-            {
+            public void onGlobalLayout() {
                 left = mLeaderCircle.getChildAt(1).getLeft() - mLeaderCircle.getChildAt(0).getLeft();
             }
         });
 
     }
+    private class LeaderAdapter extends PagerAdapter
+    {
+        @Override
+        public int getCount()
+        {
+            return 4;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object)
+        {
+            return view == object;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position)
+        {
+            container.addView(mViewList.get(position));
+            return mViewList.get(position);
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object)
+        {
+            container.removeView((View) object);
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,15 +10,19 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/leader_img"
         android:layout_width="match_parent"
-        android:layout_height="1348dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="3" />
 
     <!--引导页指示器-->
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="114dp">
+        android:layout_marginBottom="20dp"
+
+
+        >
 
         <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/leader_circle"
@@ -33,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/shape_leader_circle_f0"/>
+                android:src="@drawable/shape_leader_circle_f0" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -41,7 +44,7 @@
                 android:layout_marginLeft="32px"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/shape_leader_circle_f0"/>
+                android:src="@drawable/shape_leader_circle_f0" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -49,15 +52,8 @@
                 android:layout_marginLeft="32px"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/shape_leader_circle_f0"/>
+                android:src="@drawable/shape_leader_circle_f0" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32px"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/shape_leader_circle_f0"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
         <ImageView
@@ -66,36 +62,64 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/shape_leader_circle_pet"/>
+            android:src="@drawable/shape_leader_circle_pet" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
-
-    <TextView
-        android:id="@+id/leader_register"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="167px"
-        android:layout_marginLeft="413px"
-        android:layout_marginRight="413px"
-        android:layout_marginTop="321px"
-        android:background="@drawable/shape_leader_register"
-        android:gravity="center"
-        android:text="Register"
-        android:textColor="@color/colorWhite"
-        android:textSize="54px" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/leader_register"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="20px"
+            android:layout_weight="1"
+            android:background="@drawable/shape_leader_register"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="@color/colorWhite"
+            android:textSize="54px" />
+
+        <!--登录-->
+        <TextView
+            android:id="@+id/leader_login"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_weight="1"
+
+            android:background="@drawable/shape_leader_login"
+
+            android:gravity="center"
+            android:text="Sign In"
+            android:textColor="@color/colorPet"
+            android:textSize="54px" />
 
 
-    <TextView
-        android:id="@+id/leader_login"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="167px"
-        android:layout_marginLeft="413px"
-        android:layout_marginRight="413px"
-        android:layout_marginTop="42px"
-        android:background="@drawable/shape_leader_login"
-        android:gravity="center"
-        android:text="Sign In"
-        android:textColor="@color/colorPet"
-        android:textSize="54px"/>
-</com.zhy.autolayout.AutoLinearLayout>
+        android:layout_height="wrap_content"
+
+        >
+
+        <TextView
+            android:id="@+id/leader_continue_as_guest"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Continue as Guest"
+            android:textColor="@color/colorPet"
+            android:textSize="54px" />
+    </LinearLayout>
+
+
+</LinearLayout>
