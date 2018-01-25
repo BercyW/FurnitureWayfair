@@ -25,12 +25,14 @@
 
         <meta-data
             android:name="design_width"
-            android:value="1440"/>
+            android:value="1080"/>
         <meta-data
             android:name="design_height"
             android:value="2560"/>
 
-        <activity android:name=".view.activities.MainActivity"></activity>
+        <activity android:name=".view.activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
     </application>
 
 </manifest>

@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/purple"
+        >
 
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:layout_width="304dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="125px"
+            android:background="@color/colorWhite"
+            android:hint="Search Wayfair"
+            android:layout_marginTop="8dp"
+            android:cursorVisible="false"
+            android:textSize="53px"
+            />
+
+        <ImageView
+            android:layout_width="90px"
+            android:layout_height="46dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="36px"
+            android:scaleType="centerInside"
+            android:background="@color/colorWhite"
+            android:src="@drawable/search"
+            />
+        <ImageView
+            android:layout_width="120px"
+            android:layout_height="46dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="360dp"
+            android:scaleType="centerInside"
+            android:background="@color/purple"
+            android:src="@drawable/shopingcart"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -1,9 +1,11 @@
 package security.bercy.com.furniturewayfair.view.activities;
 
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import security.bercy.com.furniturewayfair.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -34,23 +37,31 @@ public class SplashActivity extends AppCompatActivity {
     private View mView;
     private int left;
     public static SplashActivity instance = null;
+    private ImageView simple;
+    private TextView continueAsGuest;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-         mLeaderImg = findViewById(R.id.leader_img);
+        mLeaderImg = findViewById(R.id.leader_img);
         mLeaderCircle = findViewById(R.id.leader_circle);
         mLeaderRed = findViewById(R.id.leader_red);
-
+        continueAsGuest = findViewById(R.id.leader_continue_as_guest);
         instance = this;
         init();
+
     }
+
 
     private void init() {
         initCircles();
+        simple = mViewList.get(0).findViewById(R.id.leader_img);
+        simple.setImageResource(R.drawable.splash0);
         mLeaderImg.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 float leftMargin = left * (position + positionOffset);
@@ -61,7 +72,8 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                final ImageView simple = mViewList.get(position).findViewById(R.id.leader_img);
+
+                simple = mViewList.get(position).findViewById(R.id.leader_img);
                 switch (position) {
                     case 0:
                         simple.setImageResource(R.drawable.splash0);
@@ -101,32 +113,49 @@ public class SplashActivity extends AppCompatActivity {
         });
 
     }
-    private class LeaderAdapter extends PagerAdapter
-    {
+
+    private class LeaderAdapter extends PagerAdapter {
         @Override
-        public int getCount()
-        {
-            return 4;
+        public int getCount() {
+            return 3;
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object)
-        {
+        public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position)
-        {
+        public Object instantiateItem(ViewGroup container, int position) {
             container.addView(mViewList.get(position));
             return mViewList.get(position);
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object)
-        {
+        public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
     }
+
+
+    @OnClick({R.id.leader_register, R.id.leader_login, R.id.leader_continue_as_guest})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.leader_register:
+                Log.d("main", "onViewClicked: ");
+                break;
+            case R.id.leader_login:
+                break;
+            case R.id.leader_continue_as_guest:
+                Log.d("splash", "onViewClicked: ");
+                startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                break;
+            default:
+                break;
+
+        }
+
+    }
+
 
 }

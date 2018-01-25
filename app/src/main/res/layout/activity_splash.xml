@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f5f5f0"
     tools:context=".view.activities.SplashActivity">
 
     <android.support.v4.view.ViewPager
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
         android:layout_weight="3" />
 
     <!--引导页指示器-->
@@ -20,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-
 
         >
 
@@ -80,6 +81,7 @@
             android:layout_weight="1"
             android:background="@drawable/shape_leader_register"
             android:gravity="center"
+            android:onClick="onViewClicked"
             android:text="Register"
             android:textColor="@color/colorWhite"
             android:textSize="54px" />
@@ -92,16 +94,16 @@
             android:layout_marginLeft="20px"
             android:layout_marginRight="20px"
             android:layout_weight="1"
-
+            android:onClick="onViewClicked"
             android:background="@drawable/shape_leader_login"
-
             android:gravity="center"
             android:text="Sign In"
             android:textColor="@color/colorPet"
             android:textSize="54px" />
 
-
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,6 +118,7 @@
             android:layout_marginTop="9dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:onClick="onViewClicked"
             android:text="Continue as Guest"
             android:textColor="@color/colorPet"
             android:textSize="54px" />
