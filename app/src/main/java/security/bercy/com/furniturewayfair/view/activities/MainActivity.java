@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.parent_sales:
                 showFragment(1);
+
                 tv_sales.setBackgroundResource(R.drawable.salestouming);
                 break;
             case R.id.parent_myboard:

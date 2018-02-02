@@ -8,4 +8,6 @@
     <color name="colorF0">#f0f0f0</color>
     <color name="color9">#999999</color>
     <color name="purple">#774a77</color>
+    <color name="colorBlack">#131212</color>
+    <color name="colorbackground">#f6f4ee</color>
 </resources>

@@ -4,5 +4,7 @@
     android:layout_height="match_parent"
     tools:context="security.bercy.com.furniturewayfair.view.fragment.SalesFragment">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>

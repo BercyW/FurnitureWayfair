@@ -15,9 +15,7 @@ import security.bercy.com.furniturewayfair.R;
 public class SalesFragment extends Fragment {
 
 
-    public SalesFragment() {
-        // Required empty public constructor
-    }
+
 
 
     @Override
