@@ -2,17 +2,23 @@ package security.bercy.com.furniturewayfair.view.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.zhy.autolayout.AutoLinearLayout;
@@ -21,6 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import security.bercy.com.furniturewayfair.R;
+import security.bercy.com.furniturewayfair.utils.CustomGridLayout;
+import security.bercy.com.furniturewayfair.view.activities.DetailActivity;
+import security.bercy.com.furniturewayfair.view.activities.MainActivity;
+import security.bercy.com.furniturewayfair.view.adapter.RecylerviewAdapter;
 
 
 public class HomeFragment extends Fragment {
@@ -34,15 +44,72 @@ public class HomeFragment extends Fragment {
     private List<View> mViewList;
     public static HomeFragment instance = null;
     private View view;
+    public static final int columns = 2;
+    List<Integer> images = new ArrayList<>();
 
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+
+
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initImages();
+
+    }
+
+    private void initImages() {
+        images.add(R.drawable.furniture1);
+        images.add(R.drawable.rugs2);
+        images.add(R.drawable.bedbath3);
+        images.add(R.drawable.decorpillows4);
+        images.add(R.drawable.lighting5);
+        images.add(R.drawable.storageorganized6);
+        images.add(R.drawable.kitchentabletop7);
+        images.add(R.drawable.outdoor8);
+        images.add(R.drawable.babykids9);
+        images.add(R.drawable.homeimprovement10);
+        images.add(R.drawable.sales11);
+        images.add(R.drawable.closeout12);
+
+
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
         mLeaderImg = view.findViewById(R.id.fragment_leader_img);
         mLeaderCircle = view.findViewById(R.id.fragment_circle);
         mLeaderRed = view.findViewById(R.id.fragment_red);
         instance = this;
         init();
+        initRecyclerView();
         return view;
+    }
+
+    private void initRecyclerView() {
+        RecyclerView recyclerView = view.findViewById(R.id.home_recylerview);
+        RecylerviewAdapter recylerviewAdapter = new RecylerviewAdapter(images);
+
+        recylerviewAdapter.setOnItemClickLitener(new RecylerviewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if(position==0) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),DetailActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+
+        CustomGridLayout gridLayoutManager = new CustomGridLayout(getContext(),columns);
+        gridLayoutManager.setScrollEnabled(false);
+
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(recylerviewAdapter);
+
     }
 
 
@@ -129,6 +196,5 @@ public class HomeFragment extends Fragment {
             container.removeView((View) object);
         }
     }
-
 
 }

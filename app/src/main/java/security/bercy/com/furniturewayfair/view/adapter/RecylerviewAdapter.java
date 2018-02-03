@@ -1,14 +1,19 @@
 package security.bercy.com.furniturewayfair.view.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import java.util.List;
 
 import security.bercy.com.furniturewayfair.R;
+
 
 /**
  * Created by Bercy on 2/2/18.
@@ -17,6 +22,7 @@ import security.bercy.com.furniturewayfair.R;
 public class RecylerviewAdapter extends RecyclerView.Adapter<RecylerviewAdapter.ViewHolder>{
 
     List<Integer> imgs;
+    private RecylerviewAdapter.OnItemClickListener listener;
 
     public RecylerviewAdapter(List<Integer> imgs) {
         this.imgs = imgs;
@@ -31,10 +37,19 @@ public class RecylerviewAdapter extends RecyclerView.Adapter<RecylerviewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        int imgSource = imgs.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final int imgSource = imgs.get(position);
         holder.imageView.setImageResource(imgSource);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(holder.itemView, position);
+            }
+        });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -51,4 +66,18 @@ public class RecylerviewAdapter extends RecyclerView.Adapter<RecylerviewAdapter.
 
         }
     }
+
+
+
+    //add item click event
+
+    public interface OnItemClickListener{
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickLitener(RecylerviewAdapter.OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
 }
