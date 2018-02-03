@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void init() {
         showFragment(0);
         tv_home.setBackgroundResource(R.drawable.home);
