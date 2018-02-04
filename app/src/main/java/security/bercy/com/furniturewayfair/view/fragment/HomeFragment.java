@@ -54,6 +54,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initImages();
 
     }
@@ -82,6 +83,7 @@ public class HomeFragment extends Fragment {
         mLeaderRed = view.findViewById(R.id.fragment_red);
         instance = this;
         init();
+        mLeaderImg.setOffscreenPageLimit(1);
         initRecyclerView();
         return view;
     }

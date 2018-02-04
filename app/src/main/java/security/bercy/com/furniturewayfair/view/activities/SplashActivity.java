@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -51,6 +52,7 @@ public class SplashActivity extends AppCompatActivity {
         mLeaderRed = findViewById(R.id.leader_red);
         continueAsGuest = findViewById(R.id.leader_continue_as_guest);
         instance = this;
+        mLeaderImg.setOffscreenPageLimit(1);
         init();
 
     }
@@ -128,12 +130,15 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(mViewList.get(position));
+            Log.d("create", "instantiateItem: ");
             return mViewList.get(position);
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
+            Log.d("abc", "destroyItem: ");
+            container.removeView(mViewList.get(position));
+
         }
     }
 
