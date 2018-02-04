@@ -72,9 +72,9 @@ public class ViewInRoomActivity extends AppCompatActivity implements SurfaceHold
 
         setContentView(R.layout.activity_view_in_room);
 
-        relativeLayout = (RelativeLayout) findViewById(R.id.containerImg);
+        relativeLayout = findViewById(R.id.containerImg);
         relativeLayout.setDrawingCacheEnabled(true);
-        cameraSurfaceView = (SurfaceView)
+        cameraSurfaceView =
                 findViewById(R.id.surfaceView1);
         //  cameraSurfaceView.setLayoutParams(new FrameLayout.LayoutParams(640, 480));
         cameraSurfaceHolder = cameraSurfaceView.getHolder();

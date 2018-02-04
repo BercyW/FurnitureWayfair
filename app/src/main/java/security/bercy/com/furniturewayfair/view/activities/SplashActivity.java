@@ -82,6 +82,7 @@ public class SplashActivity extends AppCompatActivity {
                         break;
                     case 1:
                         simple.setImageResource(R.drawable.splash2);
+
                         break;
                     case 2:
                         simple.setImageResource(R.drawable.splash3);
